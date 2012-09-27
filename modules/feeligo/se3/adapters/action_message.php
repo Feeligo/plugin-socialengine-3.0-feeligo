@@ -24,8 +24,13 @@ class Feeligo_Se3_Adapter_Action_Message {
   public function __construct() {
     $this->_languagevars = array(
       'body' => null,
-      // dummy languagevar for 'desc' : the action's description does not really matter here.
-      'desc' => new Feeligo_Se3_Adapter_Languagevar('flg_action_desc', array('en' => 'Feeligo', 'fr' => 'Feeligo'))
+      /**
+       * the languagevar for 'desc' will appear in the 'Preferences' drop-down menu on the user's "What's new" page
+       * as a label for the checkbox which the user needs to check to enable our notifications.
+       *
+       * At the moment we set it to "Gifts" but something else will be needed to support additional notification types
+       */
+      'desc' => new Feeligo_Se3_Adapter_Languagevar('flg_actiontype_user_sent_gift_to_user_desc', array('en' => 'Gifts', 'fr' => 'Cadeaux', 'es' => 'Regalos'))
     );
     $this->_arguments = array();
     $this->_argument_vars = array();
@@ -79,7 +84,7 @@ class Feeligo_Se3_Adapter_Action_Message {
             }
             // if user was found, link to their page. Else use generic
             if ($user !== null) {
-              $value = '<a class="flg_action_user" data-flg-role="link" data-flg-type="user" data-flg-id="'.$user->id().'" href="profile.php?user=%'.$this->_push_argument($function.'_id', $user->id()).'$s">%'.$this->_push_argument($function.'_name', $user->name()).'$s</a>';
+              $value = '<a class="flg_action_user" data-flg-role="link" data-flg-type="user" data-flg-id="'.$user->id().'" href="%'.$this->_push_argument($function.'_id', $user->link()).'$s">%'.$this->_push_argument($function.'_name', $user->name()).'$s</a>';
             }
           }
         }
