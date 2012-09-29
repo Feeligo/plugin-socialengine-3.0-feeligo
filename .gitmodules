@@ -1,0 +1,3 @@
+[submodule "modules/feeligo/sdk"]
+	path = modules/feeligo/sdk
+	url = git@github.com:Feeligo/connector-sdk-php.git
