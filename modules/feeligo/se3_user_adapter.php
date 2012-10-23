@@ -64,7 +64,7 @@ class Feeligo_Se3_User_Adapter implements FeeligoUserAdapter {
    * @return string
    */
   public function picture_url() {
-    $this->_adaptee->user_photo("", true);
+    return $this->_adaptee->user_photo("", true);
   }
 
   /**
